@@ -12,7 +12,7 @@ iniFileName = "config.ini"
 function love.load()
   readIni(iniFileName)
   implementIni()
-  openModule(primary)
+  openModule(main_menu)
 end
 
 function readIni(iniFileName)
