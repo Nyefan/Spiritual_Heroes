@@ -1,0 +1,5 @@
+-- Filename engine.lua
+-- Author: Nyefan
+-- Contact: nyefan@aol.com
+-- This module controls interaction with the game and the UI
+-- Separate modules will control sprite rendering, pathfinding, 

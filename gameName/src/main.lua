@@ -1,18 +1,35 @@
-local primary = require "primary"
-GLOBAL_SETTINGS = {}
+-- Filename: main.lua
+-- Author: Nyefan
+-- Contact: nyfan@aol.com
+
+GLOBAL_SETTINGS = { resolution_x = 320, resolution_y = 180 }
+
+local main_menu
+
 
 iniFileName = "config.ini"
 
-love.load = function()
-              readIni(iniFileName)
-              openModule(primary)
-            end
+function love.load()
+  readIni(iniFileName)
+  implementIni()
+  openModule(primary)
+end
 
 function readIni(iniFileName)
   --read iniFileName and input the results into GLOBAL_SETTINGS
   
   ---[[ as a placeholder, these default settings are used for testing
+  GLOBAL_SETTINGS.resolution_x = 1600
+  GLOBAL_SETTINGS.resolution_y = 900
+  ---]]
+end
 
+function implementIni()
+  --implement GLOBAL_SETTINGS
+  love.window.setMode( GLOBAL_SETTINGS.resolution_x, 
+                       GLOBAL_SETTINGS.resolution_y,
+                       {centered=true} -- flags table
+                     )
 end
 
 function openModule(module)
@@ -33,7 +50,9 @@ function openModule(module)
   love.threaderror = module.threaderror or love.threaderror
   love.update = module.update or love.update
   love.visible = module.visible or love.visible
-  -- there has to be a more elegant way to do this
+  -- there has to be a more elegant way to do this 
   init = module.init or function() end
   init()
 end
+
+main_menu = require "main_menu"
